@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c9e06ee3-fb4f-4121-be3f-7ee6fdcee0b4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy/quest-npc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/quest-npc.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

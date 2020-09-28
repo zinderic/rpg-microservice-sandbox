@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: quest-npc
-          image: quest-npc:latest
+          image: rpgms/quest-npc:latest
           ports:
             - containerPort: 2222

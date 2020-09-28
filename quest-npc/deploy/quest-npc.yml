@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quest-npc-deployment
+  labels:
+    app: quest-npc
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quest-npc
+  template:
+    metadata:
+      labels:
+        app: quest-npc
+    spec:
+      containers:
+        - name: quest-npc
+          image: quest-npc:latest
+          ports:
+            - containerPort: 2222

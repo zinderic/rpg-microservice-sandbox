@@ -1,0 +1,13 @@
+apiVersion: skaffold/v2beta6
+kind: Config
+metadata:
+  name: quest-npc
+build:
+  artifacts:
+  - image: rpgms/quest-npc
+  tagPolicy:
+    gitCommit: {}
+deploy:
+  kubectl:
+    manifests:
+    - deploy/quest-npc.yml

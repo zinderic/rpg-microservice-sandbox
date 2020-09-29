@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: quest-npc-deployment
+  name: quest-npc
   labels:
     app: quest-npc
 spec:
@@ -16,6 +16,19 @@ spec:
     spec:
       containers:
         - name: quest-npc
-          image: rpgms/quest-npc:latest
+          image: rpgms/quest-npc
           ports:
             - containerPort: 2222
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quest-npc
+spec:
+  type: LoadBalancer
+  selector:
+    app: quest-npc
+  ports:
+    - protocol: TCP
+      port: 2222
+      targetPort: 2222

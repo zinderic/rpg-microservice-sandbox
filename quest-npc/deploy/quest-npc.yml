@@ -35,3 +35,16 @@ spec:
     - protocol: TCP
       port: 2222
       targetPort: 2222
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quest-npc-debug
+spec:
+  type: LoadBalancer
+  selector:
+    app: quest-npc
+  ports:
+    - protocol: TCP
+      port: 56268
+      targetPort: 56268

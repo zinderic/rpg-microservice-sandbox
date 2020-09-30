@@ -1,0 +1,5 @@
+commonLabels:
+  app: quest-npc
+
+resources:
+  - ../../base

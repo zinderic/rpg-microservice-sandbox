@@ -1,0 +1,6 @@
+commonLabels:
+  app: quest-npc
+
+resources:
+  - deployment.yml
+  - service.yml

@@ -22,16 +22,3 @@ spec:
           resources:
             limits: { cpu: .3, memory: 128M }
             requests: { cpu: .1, memory: 32M }
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: quest-npc
-spec:
-  type: LoadBalancer
-  selector:
-    app: quest-npc
-  ports:
-    - protocol: TCP
-      port: 2222
-      targetPort: 2222

@@ -8,6 +8,5 @@ build:
   tagPolicy:
     gitCommit: {}
 deploy:
-  kubectl:
-    manifests:
-    - deploy/quest-npc.yml
+  kustomize:
+    paths: ["deploy/overlays/prod"]

@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: story-teller-debug
+spec:
+  type: LoadBalancer
+  selector:
+    app: story-teller
+  ports:
+    - protocol: TCP
+      port: 56268
+      targetPort: 56268

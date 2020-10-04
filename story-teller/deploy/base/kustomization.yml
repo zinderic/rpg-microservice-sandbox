@@ -1,0 +1,6 @@
+commonLabels:
+  app: story-teller
+
+resources:
+  - deployment.yml
+  - service.yml

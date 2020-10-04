@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: story-teller
+  labels:
+    app: story-teller
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: story-teller
+  template:
+    metadata:
+      labels:
+        app: story-teller
+    spec:
+      containers:
+        - name: story-teller
+          image: rpgms/story-teller
+          ports:
+            - containerPort: 4444
+          resources:
+            limits: { cpu: .3, memory: 128M }
+            requests: { cpu: .1, memory: 32M }

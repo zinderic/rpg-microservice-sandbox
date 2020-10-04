@@ -1,0 +1,11 @@
+FROM golang:1.15.2
+RUN mkdir -p /go/src/github.com/zinderic/rpg-microservice-sandbox/story-teller
+COPY . /go/src/github.com/zinderic/rpg-microservice-sandbox/story-teller
+WORKDIR /go/src/github.com/zinderic/rpg-microservice-sandbox/story-teller
+RUN go build
+
+FROM debian:buster
+WORKDIR /srv
+COPY --from=0 /go/src/github.com/zinderic/rpg-microservice-sandbox/story-teller/story-teller .
+EXPOSE 4444
+ENTRYPOINT ["/srv/story-teller"]

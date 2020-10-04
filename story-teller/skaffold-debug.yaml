@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta6
+kind: Config
+metadata:
+  name: story-teller
+build:
+  artifacts:
+  - image: rpgms/story-teller
+    docker:
+      dockerfile: Dockerfile.debug
+  tagPolicy:
+    gitCommit: {}
+deploy:
+  kustomize:
+    paths: ["deploy/overlays/debug"]

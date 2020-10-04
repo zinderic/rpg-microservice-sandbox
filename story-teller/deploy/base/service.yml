@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: story-teller
+spec:
+  type: LoadBalancer
+  selector:
+    app: story-teller
+  ports:
+    - protocol: TCP
+      port: 4444
+      targetPort: 4444

@@ -1,0 +1,5 @@
+commonLabels:
+  app: story-teller
+
+resources:
+  - ../../base

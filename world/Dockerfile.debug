@@ -8,5 +8,5 @@ FROM debian:buster
 WORKDIR /srv
 COPY --from=0 /go/bin/dlv .
 COPY --from=0 /go/src/github.com/zinderic/rpg-microservice-sandbox/world/world .
-EXPOSE 2222 56268
+EXPOSE 3333 56268
 CMD ["/srv/dlv", "--listen=:56268", "--headless=true", "--api-version=2", "--accept-multiclient", "exec", "/srv/world"]

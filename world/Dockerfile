@@ -6,5 +6,5 @@ RUN go build
 FROM debian:buster
 WORKDIR /srv
 COPY --from=0 /go/src/github.com/zinderic/rpg-microservice-sandbox/world/world .
-EXPOSE 2222
+EXPOSE 3333
 ENTRYPOINT ["/srv/world"]

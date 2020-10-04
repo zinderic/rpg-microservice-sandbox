@@ -18,7 +18,7 @@ spec:
         - name: world
           image: rpgms/world
           ports:
-            - containerPort: 2222
+            - containerPort: 3333
           resources:
             limits: { cpu: .3, memory: 128M }
             requests: { cpu: .1, memory: 32M }

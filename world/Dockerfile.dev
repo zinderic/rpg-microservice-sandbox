@@ -1,0 +1,11 @@
+FROM golang:1.15.2
+RUN mkdir -p /go/src/github.com/zinderic/rpg-microservice-sandbox/world
+COPY . /go/src/github.com/zinderic/rpg-microservice-sandbox/world
+WORKDIR /go/src/github.com/zinderic/rpg-microservice-sandbox/world
+RUN go build
+
+FROM debian:buster
+WORKDIR /srv
+COPY --from=0 /go/src/github.com/zinderic/rpg-microservice-sandbox/world/world .
+EXPOSE 3333
+ENTRYPOINT ["/srv/world"]

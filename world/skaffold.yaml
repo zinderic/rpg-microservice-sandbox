@@ -6,9 +6,9 @@ build:
   artifacts:
   - image: rpgms/world
     docker:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
   tagPolicy:
     gitCommit: {}
 deploy:
   kustomize:
-    paths: ["deploy/overlays/prod"]
+    paths: ["deploy/overlays/dev"]

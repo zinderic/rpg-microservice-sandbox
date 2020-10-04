@@ -1,0 +1,6 @@
+commonLabels:
+  app: world
+
+resources:
+  - deployment.yml
+  - service.yml

@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: world-debug
+spec:
+  type: LoadBalancer
+  selector:
+    app: world
+  ports:
+    - protocol: TCP
+      port: 56268
+      targetPort: 56268

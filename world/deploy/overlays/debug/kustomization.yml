@@ -1,0 +1,6 @@
+commonLabels:
+  app: world
+
+resources:
+  - ../../base
+  - debug.yml

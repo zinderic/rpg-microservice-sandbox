@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta6
+kind: Config
+metadata:
+  name: world
+build:
+  artifacts:
+  - image: rpgms/world
+    docker:
+      dockerfile: Dockerfile
+  tagPolicy:
+    gitCommit: {}
+deploy:
+  kustomize:
+    paths: ["deploy/overlays/prod"]

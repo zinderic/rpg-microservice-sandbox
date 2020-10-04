@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: world
+  labels:
+    app: world
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: world
+  template:
+    metadata:
+      labels:
+        app: world
+    spec:
+      containers:
+        - name: world
+          image: rpgms/world
+          ports:
+            - containerPort: 2222
+          resources:
+            limits: { cpu: .3, memory: 128M }
+            requests: { cpu: .1, memory: 32M }

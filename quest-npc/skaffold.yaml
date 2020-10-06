@@ -11,4 +11,4 @@ build:
     gitCommit: {}
 deploy:
   kustomize:
-    paths: ["deploy/overlays/prod"]
+    paths: ["deploy/overlays/dev"]

@@ -1,0 +1,30 @@
+apiVersion: skaffold/v2beta8
+kind: Config
+build:
+  artifacts:
+    - image: rpgms/quest-npc
+      context: quest-npc
+    - image: rpgms/world
+      context: world
+    - image: rpgms/story-teller
+      context: story-teller
+deploy:
+  kustomize:
+    paths: [
+      "quest-npc/deploy/overlays/dev",
+      "world/deploy/overlays/dev",
+      "story-teller/deploy/overlays/dev",
+      ]
+portForward:
+  - resourceType: deployment
+    resourceName: quest-npc
+    port: 2222
+    localPort: 2222
+  - resourceType: deployment
+    resourceName: world
+    port: 3333
+    localPort: 3333
+  - resourceType: deployment
+    resourceName: story-teller
+    port: 4444
+    localPort: 4444

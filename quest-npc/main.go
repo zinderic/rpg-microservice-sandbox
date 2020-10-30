@@ -29,8 +29,10 @@ func main() {
 		log.Fatalln(err)
 	}
 	// Create DB schema
-	db.AutoMigrate(&Story{})
-
+	err = db.AutoMigrate(&Story{})
+	if err != nil {
+		log.Fatalln(err)
+	}
 	// Add the dummy records from the var section
 	db.Create(stories)
 

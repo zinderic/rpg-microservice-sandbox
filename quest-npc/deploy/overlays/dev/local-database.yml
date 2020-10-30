@@ -23,5 +23,22 @@ spec:
             limits: { cpu: .8, memory: 512M }
             requests: { cpu: .2, memory: 64M }
           env:
+            - name: POSTGRES_DB
+              value: gorm
+            - name: POSTGRES_USER
+              value: gorm
             - name: POSTGRES_PASSWORD
-              value: password
+              value: gorm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quest-npc-db-svc
+  labels:
+    app: quest-npc-db-svc
+spec:
+  ports:
+    - port: 5432
+      protocol: TCP
+  selector:
+    app: quest-npc-db

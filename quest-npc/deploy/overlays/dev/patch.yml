@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quest-npc-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quest-npc-app
+  template:
+    metadata:
+      labels:
+        app: quest-npc-app
+    spec:
+      initContainers:
+        - name: check-db-ready
+          image: postgres:13
+          command: ['sh', '-c',
+              'until pg_isready -h quest-npc-db-svc -p 5432;
+                do echo waiting for database; sleep 2; done;']

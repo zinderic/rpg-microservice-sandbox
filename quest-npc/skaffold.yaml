@@ -6,7 +6,7 @@ build:
   artifacts:
   - image: rpgms/quest-npc-app
     docker:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
   tagPolicy:
     gitCommit: {}
 deploy:

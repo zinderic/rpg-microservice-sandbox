@@ -1,10 +1,10 @@
 apiVersion: skaffold/v2beta6
 kind: Config
 metadata:
-  name: quest-npc
+  name: quest-npc-app
 build:
   artifacts:
-  - image: rpgms/quest-npc
+  - image: rpgms/quest-npc-app
     docker:
       dockerfile: Dockerfile
   tagPolicy:

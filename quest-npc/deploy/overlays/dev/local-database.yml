@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quest-npc-db
+  labels:
+    app: quest-npc-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quest-npc-db
+  template:
+    metadata:
+      labels:
+        app: quest-npc-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:13
+          ports:
+            - containerPort: 5432
+          resources:
+            limits: { cpu: .8, memory: 512M }
+            requests: { cpu: .2, memory: 64M }
+          env:
+            - name: POSTGRES_PASSWORD
+              value: password

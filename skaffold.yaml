@@ -1,19 +1,29 @@
 apiVersion: skaffold/v2beta8
 kind: Config
 build:
+  tagPolicy:
+    gitCommit: {}
+  local:
+    push: true
   artifacts:
-    - image: rpgms/quest-npc
+    - image: rpgms/quest-npc-app
       context: quest-npc
+      docker:
+        dockerfile: Dockerfile.dev
     - image: rpgms/world
       context: world
+      docker:
+        dockerfile: Dockerfile.dev
     - image: rpgms/story-teller
       context: story-teller
+      docker:
+        dockerfile: Dockerfile.dev
 deploy:
   kustomize:
     paths: [
-      "quest-npc/deploy/overlays/dev",
-      "world/deploy/overlays/dev",
-      "story-teller/deploy/overlays/dev",
+      "quest-npc/deploy/overlays/prod",
+      "world/deploy/overlays/prod",
+      "story-teller/deploy/overlays/prod",
       ]
 portForward:
   - resourceType: deployment

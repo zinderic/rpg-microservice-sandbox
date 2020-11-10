@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quest-npc-app
+  labels:
+    app: quest-npc-app
+spec:
+  template:
+    spec:
+      containers:
+        - name: quest-npc-app
+          env:
+            - name: POSTGRES_HOST
+              value:
+              valueFrom:
+                secretKeyRef:
+                  name: db-creds
+                  key: POSTGRES_HOST
+            - name: POSTGRES_DB
+              value:
+              valueFrom:
+                secretKeyRef:
+                  name: db-creds
+                  key: POSTGRES_DB
+            - name: POSTGRES_USER
+              value:
+              valueFrom:
+                secretKeyRef:
+                  name: db-creds
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              value:
+              valueFrom:
+                secretKeyRef:
+                  name: db-creds
+                  key: POSTGRES_PASSWORD

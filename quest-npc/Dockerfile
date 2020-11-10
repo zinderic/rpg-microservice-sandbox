@@ -1,4 +1,5 @@
 FROM golang:1.15.2
+RUN go get gorm.io/gorm
 RUN go get github.com/zinderic/rpg-microservice-sandbox/quest-npc
 WORKDIR /go/src/github.com/zinderic/rpg-microservice-sandbox/quest-npc
 RUN go build

@@ -6,6 +6,7 @@ import (
 	"gorm.io/gorm"
 	"log"
 	"net/http"
+	"os"
 )
 
 type Story struct {
@@ -23,7 +24,10 @@ var (
 
 func main() {
 
-	dsn := "host=quest-npc-db-svc port=5432 user=gorm password=gorm dbname=gorm sslmode=disable TimeZone=Europe/Sofia"
+	dsn := "host=" + os.Getenv("POSTGRES_HOST") +
+		" port=5432 user=" + os.Getenv("POSTGRES_USER") +
+		" password=" + os.Getenv("POSTGRES_PASSWORD") +
+		" dbname=" + os.Getenv("POSTGRES_DB") + " sslmode=disable TimeZone=Europe/Sofia"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatalln(err)

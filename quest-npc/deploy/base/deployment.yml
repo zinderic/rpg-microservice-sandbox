@@ -22,3 +22,12 @@ spec:
           resources:
             limits: { cpu: .3, memory: 128M }
             requests: { cpu: .1, memory: 32M }
+          env:
+            - name: POSTGRES_HOST
+              value: quest-npc-db-svc
+            - name: POSTGRES_DB
+              value: gorm
+            - name: POSTGRES_USER
+              value: gorm
+            - name: POSTGRES_PASSWORD
+              value: gorm

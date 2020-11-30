@@ -1,5 +1,5 @@
 commonLabels:
-  app: quest-npc
+  app: quest-npc-app
 
 resources:
   - deployment.yml

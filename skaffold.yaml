@@ -25,16 +25,39 @@ deploy:
       "world/deploy/overlays/prod",
       "story-teller/deploy/overlays/prod",
       ]
-portForward:
-  - resourceType: deployment
-    resourceName: quest-npc
-    port: 2222
-    localPort: 2222
-  - resourceType: deployment
-    resourceName: world
-    port: 3333
-    localPort: 3333
-  - resourceType: deployment
-    resourceName: story-teller
-    port: 4444
-    localPort: 4444
+profiles:
+- name: dev
+  activation:
+  - command: dev # Always activate this profile for the 'skaffold dev' command
+  deploy:
+    kustomize:
+      paths: [
+        "quest-npc/deploy/overlays/dev",
+        "world/deploy/overlays/dev",
+        "story-teller/deploy/overlays/dev",
+        ]
+  portForward:
+    - resourceType: deployment
+      resourceName: quest-npc
+      port: 2222
+      localPort: 2222
+    - resourceType: deployment
+      resourceName: quest-npc-db
+      port: 5432
+      localPort: 5432
+    - resourceType: deployment
+      resourceName: world
+      port: 3333
+      localPort: 3333
+    - resourceType: deployment
+      resourceName: story-teller
+      port: 4444
+      localPort: 4444
+- name: prod
+  deploy:
+    kustomize:
+      paths: [
+        "quest-npc/deploy/overlays/prod",
+        "world/deploy/overlays/prod",
+        "story-teller/deploy/overlays/prod",
+        ]

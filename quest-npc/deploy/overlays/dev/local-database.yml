@@ -37,6 +37,7 @@ metadata:
   labels:
     app: quest-npc-db-svc
 spec:
+  type: LoadBalancer
   ports:
     - port: 5432
       protocol: TCP

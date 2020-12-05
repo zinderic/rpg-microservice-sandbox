@@ -6,7 +6,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: quest-npc
+    app: quest-npc-app
   ports:
     - protocol: TCP
       port: 56268

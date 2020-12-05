@@ -1,14 +1,55 @@
-apiVersion: skaffold/v2beta6
+apiVersion: skaffold/v2beta8
 kind: Config
-metadata:
-  name: story-teller
 build:
-  artifacts:
-  - image: rpgms/story-teller
-    docker:
-      dockerfile: Dockerfile.dev
   tagPolicy:
     gitCommit: {}
+  local:
+    push: true
+  artifacts:
+    - image: rpgms/story-teller
+      context: .
+      docker:
+        dockerfile: Dockerfile.dev
 deploy:
   kustomize:
-    paths: ["deploy/overlays/dev"]
+    paths: [
+      "deploy/overlays/prod",
+      ]
+profiles:
+- name: dev
+  activation:
+  - command: dev # Always activate this profile for the 'skaffold dev' command
+  deploy:
+    kustomize:
+      paths: [
+        "deploy/overlays/dev",
+        ]
+  portForward:
+    - resourceType: deployment
+      resourceName: story-teller
+      port: 4444
+      localPort: 4444
+- name: prod
+  deploy:
+    kustomize:
+      paths: [
+        "deploy/overlays/prod",
+        ]
+- name: debug
+  activation:
+  - command: debug # Always activate this profile for the 'skaffold debug' command
+  build:
+    tagPolicy:
+      gitCommit: {}
+    local:
+      push: true
+    artifacts:
+      - image: rpgms/story-teller
+        context: .
+        docker:
+          dockerfile: Dockerfile.debug
+  deploy:
+    kustomize:
+      paths: [
+        "deploy/overlays/debug",
+        ]

@@ -1,14 +1,59 @@
-apiVersion: skaffold/v2beta6
+apiVersion: skaffold/v2beta8
 kind: Config
-metadata:
-  name: quest-npc-app
 build:
-  artifacts:
-  - image: rpgms/quest-npc-app
-    docker:
-      dockerfile: Dockerfile.dev
   tagPolicy:
     gitCommit: {}
+  local:
+    push: true
+  artifacts:
+    - image: rpgms/quest-npc-app
+      context: .
+      docker:
+        dockerfile: Dockerfile.dev
 deploy:
   kustomize:
-    paths: ["deploy/overlays/dev"]
+    paths: [
+      "deploy/overlays/prod",
+      ]
+profiles:
+- name: dev
+  activation:
+  - command: dev # Always activate this profile for the 'skaffold dev' command
+  deploy:
+    kustomize:
+      paths: [
+        "deploy/overlays/dev",
+        ]
+  portForward:
+    - resourceType: deployment
+      resourceName: quest-npc
+      port: 2222
+      localPort: 2222
+    - resourceType: deployment
+      resourceName: quest-npc-db
+      port: 5432
+      localPort: 5432
+- name: prod
+  deploy:
+    kustomize:
+      paths: [
+        "deploy/overlays/prod",
+        ]
+- name: debug
+  activation:
+  - command: debug # Always activate this profile for the 'skaffold debug' command
+  build:
+    tagPolicy:
+      gitCommit: {}
+    local:
+      push: true
+    artifacts:
+      - image: rpgms/quest-npc-app
+        context: .
+        docker:
+          dockerfile: Dockerfile.debug
+  deploy:
+    kustomize:
+      paths: [
+        "deploy/overlays/debug",
+        ]

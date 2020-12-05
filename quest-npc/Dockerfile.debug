@@ -1,5 +1,6 @@
 FROM golang:1.15.2
-RUN go get github.com/zinderic/rpg-microservice-sandbox/quest-npc
+RUN mkdir -p /go/src/github.com/zinderic/rpg-microservice-sandbox/quest-npc
+COPY . /go/src/github.com/zinderic/rpg-microservice-sandbox/quest-npc
 RUN go get github.com/go-delve/delve/cmd/dlv
 WORKDIR /go/src/github.com/zinderic/rpg-microservice-sandbox/quest-npc
 RUN go build -gcflags="all=-N -l" -o quest-npc

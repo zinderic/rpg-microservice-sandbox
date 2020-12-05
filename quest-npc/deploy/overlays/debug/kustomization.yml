@@ -4,3 +4,6 @@ bases:
   - ../../base
 resources:
   - debug.yml
+  - local-database.yml
+patchesStrategicMerge:
+  - patch.yml

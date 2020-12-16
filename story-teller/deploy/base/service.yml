@@ -10,3 +10,4 @@ spec:
     - protocol: TCP
       port: 4444
       targetPort: 4444
+      name: http-story-teller

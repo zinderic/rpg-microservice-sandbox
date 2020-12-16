@@ -10,3 +10,4 @@ spec:
     - protocol: TCP
       port: 2222
       targetPort: 2222
+      name: http-quest-npc-app

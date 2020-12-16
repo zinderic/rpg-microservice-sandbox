@@ -10,3 +10,4 @@ spec:
     - protocol: TCP
       port: 3333
       targetPort: 3333
+      name: http-world

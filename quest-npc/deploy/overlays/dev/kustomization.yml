@@ -6,3 +6,8 @@ resources:
   - local-database.yml
 patchesStrategicMerge:
   - patch.yml
+secretGenerator:
+- name: db-creds
+  behavior: create
+  envs:
+    - "db-creds-file"
